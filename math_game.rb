@@ -17,6 +17,8 @@ create questions and determine if answer is correct
 -answer
 
 =end
+require './player'
+require './question'
 
 class MathGame
   attr_accessor :players, :current, :is_over
@@ -67,40 +69,6 @@ class MathGame
     self.current += 1
     if (self.current == self.max)
       self.current = 0
-    end
-  end
-
-end
-
-class Player
-  attr_reader :name
-  attr_accessor :score, :lives
-
-  def initialize(name)
-    @name = name
-    @score = 0
-    @lives = 3
-  end
-
-  def scored
-    @score += 1
-  end
-end
-
-class Question
-  attr_reader :question, :answer
-
-  def initialize
-    @numbers = [rand(20), rand(20)]
-    @question = "What is #{@numbers[0]} + #{@numbers[1]}"
-    @answer = "#{@numbers[0] + @numbers[1]}"
-  end
-
-  def is_correct(answer)
-    if (@answer == answer)
-      return true
-    else
-      return false
     end
   end
 
